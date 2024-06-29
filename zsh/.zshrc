@@ -24,13 +24,4 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Install: `brew install zsh-autosuggestions`
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Aliases
-alias dotfiles="cd $DOTFILES"
-alias library="cd $HOME/Library"
-alias dev="cd $HOME/dev"
-
-alias vim="nvim"
-
-alias soz="source ~/.zshrc"
-
 source ~/.zsh_profile

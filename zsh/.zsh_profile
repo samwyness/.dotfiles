@@ -44,3 +44,12 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 # end NVM
+
+# Aliases
+alias dotfiles="cd $DOTFILES"
+alias library="cd $HOME/Library"
+alias dev="cd $HOME/dev"
+
+alias vim="nvim"
+
+alias soz="source ~/.zshrc"
