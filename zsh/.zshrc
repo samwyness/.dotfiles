@@ -31,4 +31,6 @@ alias dev="cd $HOME/dev"
 
 alias vim="nvim"
 
+alias soz="source ~/.zshrc"
+
 source ~/.zsh_profile
