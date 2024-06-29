@@ -92,6 +92,16 @@ config.key_tables = {
 	},
 }
 
+-- Mouse
+config.mouse_bindings = {
+	-- Ctrl-click will open the link under the mouse cursor
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "CTRL",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+}
+
 -- Register custom event handlers
 termui.registerEventHandlers(title_color_bg, title_color_fg)
 
