@@ -1,4 +1,4 @@
 [submodule "nvim/.config/nvim"]
-	path = nvim/.config/nvim
+        path = nvim/.config/nvim
         url = git@github.com:samwyness/init.lua.git
         branch = main
