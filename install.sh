@@ -18,4 +18,4 @@ brew update
 
 # Install all our dependencies with bundle (See Brewfile)
 echo "Installing Homebrew bundle..."
-brew bundle --file $DOTFILES/homebrew/Brewfile
+brew bundle install --file="~/Brewfile"
