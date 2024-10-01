@@ -1388,7 +1388,7 @@
         "bottle": false
       },
       "hashicorp/tap/terraform": {
-        "version": "1.9.6",
+        "version": "1.9.0",
         "bottle": false
       },
       "octopusdeploy/taps/octopuscli": {
@@ -1431,7 +1431,7 @@
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
         "Xcode": "15.3",
-        "macOS": "14.5"
+        "macOS": "14.6.1"
       }
     }
   }
