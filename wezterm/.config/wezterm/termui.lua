@@ -80,7 +80,7 @@ local function registerEventHandlers(title_color_bg, title_color_fg)
       args = args,
       position = {
         x = 50,
-        y = 200,
+        y = 150,
       },
     })
 

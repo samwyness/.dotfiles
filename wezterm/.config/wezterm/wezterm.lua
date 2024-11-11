@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 
 local termui = require 'termui'
 
-config.initial_cols = 210
+config.initial_cols = 200
 config.initial_rows = 69
 
 config.window_decorations = 'RESIZE'
@@ -30,6 +30,7 @@ config.cursor_blink_ease_out = 'Constant'
 -- Fonts
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.font = wezterm.font('JetBrains Mono', { italic = false })
+config.font_size = 12.5
 
 -- Colors
 local COLOR = require 'colors'
