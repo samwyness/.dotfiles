@@ -55,13 +55,12 @@ config.keys = {
   -- panes
   { key = '_', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
   { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = 'q', mods = 'CTRL|SHIFT', action = act.CloseCurrentPane { confirm = true } },
+  { key = 'x', mods = 'CTRL|SHIFT', action = act.CloseCurrentPane { confirm = true } },
   { key = 'o', mods = 'CTRL|SHIFT', action = act.RotatePanes 'Clockwise' },
-  {
-    key = 'r',
-    mods = 'CTRL|SHIFT',
-    action = act.ActivateKeyTable { name = 'resize_pane', one_shot = false },
-  },
+  { key = 'LeftArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Left', 2 } },
+  { key = 'RightArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Right', 2 } },
+  { key = 'UpArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Up', 2 } },
+  { key = 'DownArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Down', 2 } },
   { key = 'Enter', mods = 'CTRL|SHIFT', action = act.TogglePaneZoomState },
 
   -- Scrollback
@@ -82,18 +81,6 @@ config.keys = {
       act.ClearScrollback 'ScrollbackAndViewport',
       act.SendKey { key = 'L', mods = 'CTRL' },
     },
-  },
-}
-
--- Key tables
-config.key_tables = {
-  resize_pane = {
-    { key = 'h', action = act.AdjustPaneSize { 'Left', 2 } },
-    { key = 'j', action = act.AdjustPaneSize { 'Down', 2 } },
-    { key = 'k', action = act.AdjustPaneSize { 'Up', 2 } },
-    { key = 'l', action = act.AdjustPaneSize { 'Right', 2 } },
-    { key = 'Escape', action = 'PopKeyTable' },
-    { key = 'Enter', action = 'PopKeyTable' },
   },
 }
 
