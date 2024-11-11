@@ -3,14 +3,18 @@
 echo "Starting install script..."
 
 pushd $DOTFILES
-echo "Stow files and directories..."
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-do
+
+if [[ ! -z $STOW_FOLDERS ]]; then
+  echo "Stow files and directories..."
+  for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+  do
     echo "stow linking $folder"
     stow -D $folder
     stow $folder
-done
-echo "Stow complete."
+  done
+  echo "Stow complete."
+fi
+
 popd
 
 # Update Homebrew recipes
