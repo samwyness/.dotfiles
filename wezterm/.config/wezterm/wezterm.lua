@@ -9,7 +9,7 @@ config.initial_cols = 200
 config.initial_rows = 69
 
 config.window_decorations = 'RESIZE'
-config.window_background_opacity = 1
+config.window_background_opacity = 0.93
 config.macos_window_background_blur = 20
 config.adjust_window_size_when_changing_font_size = false
 
