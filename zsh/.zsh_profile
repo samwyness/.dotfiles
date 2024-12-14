@@ -53,3 +53,8 @@ alias dev="cd $HOME/dev"
 alias vim="nvim"
 
 alias soz="source ~/.zshrc"
+alias path="echo ${PATH//:/$'\n'} | sort -n"
+
+# RIP duplicate paths
+typeset -U PATH
+
