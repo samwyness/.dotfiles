@@ -1,25 +1,18 @@
-#!/usr/bin/env zsh
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-echo "Starting install script..."
+# Include the logger
+source "$SCRIPT_DIR"/logger.sh
 
-pushd $DOTFILES
+# Check for Homebrew and install if we don't have it, otherwise update
+if test ! $(which brew); then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-if [[ ! -z $STOW_FOLDERS ]]; then
-  echo "Stow files and directories..."
-  for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-  do
-    echo "stow linking $folder"
-    stow -D $folder
-    stow $folder
-  done
-  echo "Stow complete."
+  log_info 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  brew update
 fi
 
-popd
-
-# Update Homebrew recipes
-brew update
-
 # Install all our dependencies with bundle (See Brewfile)
-echo "Installing Homebrew bundle..."
-brew bundle install --file="~/Brewfile"
+log_info "Installing Homebrew bundle..."
+brew bundle install --file="$SCRIPT_DIR/homebrew/Brewfile"
