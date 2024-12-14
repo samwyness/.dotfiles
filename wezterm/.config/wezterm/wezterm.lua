@@ -5,12 +5,12 @@ local config = wezterm.config_builder()
 
 local termui = require 'termui'
 
-config.initial_cols = 200
-config.initial_rows = 69
+config.initial_cols = 180
+config.initial_rows = 70
 
 config.window_decorations = 'RESIZE'
-config.window_background_opacity = 0.93
-config.macos_window_background_blur = 20
+config.window_background_opacity = 0.96
+config.macos_window_background_blur = 42
 config.adjust_window_size_when_changing_font_size = false
 
 config.show_tab_index_in_tab_bar = false
@@ -30,7 +30,7 @@ config.cursor_blink_ease_out = 'Constant'
 -- Fonts
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.font = wezterm.font('JetBrains Mono', { italic = false })
-config.font_size = 12.5
+config.font_size = 13
 
 -- Colors
 local COLOR = require 'colors'
