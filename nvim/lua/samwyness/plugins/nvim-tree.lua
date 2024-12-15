@@ -18,7 +18,8 @@ return {
       vim.keymap.set('n', '<C-.>', ':NvimTreeResize +20<enter>', { desc = 'Increase file explorer size' }),
       vim.keymap.set('n', '<C-,>', ':NvimTreeResize -20<enter>', { desc = 'Derease file explorer size' }),
       vim.keymap.set('n', '<leader>fo', '<cmd>NvimTreeOpen<enter>', { desc = '[F]ile explorer [O]pen' }),
-      vim.keymap.set('n', '<leader>fc', '<cmd>NvimTreeCollapse<CR>', { desc = '[F]ile explorer [C]ollapse' }),
+      vim.keymap.set('n', '<leader>fc', '<cmd>NvimTreeClose<CR>', { desc = '[F]ile explorer [C]lose' }),
+      vim.keymap.set('n', '<leader>fC', '<cmd>NvimTreeCollapse<CR>', { desc = '[F]ile explorer [C]ollapse' }),
       vim.keymap.set('n', '<leader>fr', '<cmd>NvimTreeRefresh<CR>', { desc = '[F]ile explorer [R]efresh' }),
     }
   end,
