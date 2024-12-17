@@ -53,15 +53,15 @@ config.window_frame = {
 -- Keys
 config.keys = {
   -- panes
-  { key = '_', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
-  { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
-  { key = 'x', mods = 'CTRL|SHIFT', action = act.CloseCurrentPane { confirm = true } },
-  { key = 'o', mods = 'CTRL|SHIFT', action = act.RotatePanes 'Clockwise' },
+  { key = '_', mods = 'ALT|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },
+  { key = '|', mods = 'ALT|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
+  { key = 'x', mods = 'ALT|SHIFT', action = act.CloseCurrentPane { confirm = true } },
+  { key = 'o', mods = 'ALT|SHIFT', action = act.RotatePanes 'Clockwise' },
   { key = 'LeftArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Left', 2 } },
   { key = 'RightArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Right', 2 } },
   { key = 'UpArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Up', 2 } },
   { key = 'DownArrow', mods = 'ALT|SHIFT', action = act.AdjustPaneSize { 'Down', 2 } },
-  { key = 'Enter', mods = 'CTRL|SHIFT', action = act.TogglePaneZoomState },
+  { key = 'Enter', mods = 'ALT|SHIFT', action = act.TogglePaneZoomState },
 
   -- Scrollback
   {
