@@ -26,9 +26,9 @@ bash setup.sh
 
 Installs [Homebrew](https://brew.sh/) and [Brewfile](https://github.com/Homebrew/homebrew-bundle) dependencies.
 
-> [!NOTE]
-> Installation is run in the setup.sh script
-
 ```bash
 bash install.sh
 ```
+
+> [!NOTE]
+> Installation is run in the `setup.sh` script
