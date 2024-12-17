@@ -2,11 +2,33 @@
 
 My configuration files, for Mac OS.
 
-### Usage
-```bash
-# Leaving a machine
-brew bundle dump --file ./homebrew/Brewfile --force
+## Usage
 
-# Fresh installation
+### Leaving a machine
+
+Dumps the current Homebrew dependencies to a file for later use when re-installing.
+
+```bash
+brew bundle dump --file ./homebrew/Brewfile --force
+```
+
+### Fresh setup
+
+Runs the installation script, creates symlinks to dotfiles, and creates `dev` directories.
+
+### Setup
+
+```bash
 bash setup.sh
+```
+
+### Install dependencies
+
+Installs [Homebrew](https://brew.sh/) and [Brewfile](https://github.com/Homebrew/homebrew-bundle) dependencies.
+
+> [!NOTE]
+> Installation is run in the setup.sh script
+
+```bash
+bash install.sh
 ```
