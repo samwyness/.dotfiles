@@ -14,15 +14,30 @@ return {
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+      { -- optional cmp completion source for require statements and module annotations
+        "hrsh7th/nvim-cmp",
+        opts = function(_, opts)
+          opts.sources = opts.sources or {}
+          table.insert(opts.sources, {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          })
+        end,
+      },
       'hrsh7th/cmp-nvim-lsp',
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+          library = {
+            -- See the configuration section for more details
+            -- Load luvit types when the `vim.uv` word is found
+            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+          },
+        },
+      },
       'j-hui/fidget.nvim',
       'filipdutescu/renamer.nvim',
-      {
-        -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-        -- used for completion, annotations and signatures of Neovim apis
-        'folke/neodev.nvim',
-        opts = {},
-      },
     },
     config = function()
       require('mason').setup()
@@ -93,7 +108,6 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('samwyness-lsp-attach', { clear = true }),
         callback = function(event)
-          local telescopeBuiltin = require 'telescope.builtin'
 
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -105,18 +119,9 @@ return {
             border = 'rounded',
           })
 
-          map('<leader>gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          map('<leader>cR', require('renamer').rename, 'Rename symbol')
 
-          map('<leader>gd', telescopeBuiltin.lsp_definitions, '[G]oto [D]efinition')
-          map('<leader>gr', telescopeBuiltin.lsp_references, '[G]oto [R]eferences')
-          map('<leader>gI', telescopeBuiltin.lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>td', telescopeBuiltin.lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ds', telescopeBuiltin.lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>ws', telescopeBuiltin.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-          map('<leader>rn', require('renamer').rename, '[R]e[n]ame')
-
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ctions')
+          map('<leader>ca', vim.lsp.buf.code_action, 'Code Actions')
 
           -- Typescript specific code actions
           map('<leader>co', function()
@@ -127,7 +132,7 @@ return {
                 diagnostics = {},
               },
             }
-          end, '[C]ode [O]rganize imports')
+          end, 'Organize imports')
 
           map('<leader>cr', function()
             vim.lsp.buf.code_action {
@@ -137,12 +142,12 @@ return {
                 diagnostics = {},
               },
             }
-          end, '[C]ode [R]emove unused imports')
+          end, 'Remove unused imports')
 
           map('<leader>h', function()
             ---@diagnostic disable-next-line: param-type-mismatch
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(nil), nil)
-          end, 'Toggle Inlay [H]ints')
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(nil), nil) 
+          end, 'Toggle inlay hints')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then

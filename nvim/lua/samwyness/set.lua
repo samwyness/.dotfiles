@@ -9,6 +9,8 @@ vim.opt.scrolloff = 10
 
 vim.opt.termguicolors = true
 
+vim.g.snacks_animate = false
+
 -- Cursor
 vim.opt.guicursor = 'n-v-c:block,i-ci-ve:ver25,r-cr-o:block,o:hor50,a:blinkon250'
 vim.opt.cursorline = true
