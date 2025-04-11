@@ -15,7 +15,7 @@ $SCRIPT_DIR/install.sh
 
 # Setup dotfile symlinks
 STOW_ROOT_DIRS="git,zsh" # Directories symlinked into ~/
-STOW_CONFIG_DIRS="homebrew,nvim,wezterm" # Directories symlinked into ~/.config
+STOW_CONFIG_DIRS="homebrew,nvim,wezterm,zed" # Directories symlinked into ~/.config
 
 if [[ ! -z $STOW_ROOT_DIRS ]]; then
   for folder in $(echo $STOW_ROOT_DIRS | sed "s/,/ /g")
