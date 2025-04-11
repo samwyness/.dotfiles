@@ -7,63 +7,63 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-    "icon_theme": "Catppuccin Mocha",
-    "theme": "Catppuccin Mocha - No Italics",
-    "telemetry": {
-      "diagnostics": false,
-      "metrics": false
+  "icon_theme": "Catppuccin Mocha",
+  "theme": "Catppuccin Mocha - No Italics",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "features": {
+    "edit_prediction_provider": "zed",
+    "copilot": false
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
     },
-    "features": {
-      "edit_prediction_provider": "zed",
-      "copilot": false
-    },
-    "assistant": {
-      "default_model": {
-        "provider": "zed.dev",
-        "model": "claude-3-5-sonnet-latest"
-      },
-      "version": "2",
-      "button": true
-    },
-    "chat_panel": {
-      "button": true
-    },
-    "vim_mode": true,
-    "relative_line_numbers": true,
-    "ui_font_size": 15,
-    "buffer_font_family": "Menlo",
-    "buffer_font_size": 14.0,
-    "inlay_hints": {
-      "enabled": true,
-      "show_type_hints": false,
-      "show_parameter_hints": true,
-      "show_other_hints": true
-    },
-    "git_panel": {
-      // Whether to show the git panel button in the status bar.
-      "button": true,
-      // Where to the git panel. Can be 'left' or 'right'.
-      "dock": "left",
-      // Default width of the git panel.
-      "default_width": 360
-    },
-    "tabs": {
-      "file_icons": true,
-      "git_status": true
-    },
-    "preview_tabs": {
-      "enable_preview_from_file_finder": true
-    },
-    "file_types": {
-      "Shell Script": ["**.env.*", "**.env"],
-      "C++": ["mm", "m"]
-    },
-    "format_on_save": "on",
-    "formatter": {
-      "code_actions": {
-        "source.organizeImports": true,
-        "source.fixAll.eslint": true
-      }
+    "version": "2",
+    "button": true
+  },
+  "chat_panel": {
+    "button": true
+  },
+  "vim_mode": true,
+  "relative_line_numbers": true,
+  "ui_font_size": 15,
+  "buffer_font_family": "Menlo",
+  "buffer_font_size": 14.0,
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": false,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  },
+  "git_panel": {
+    // Whether to show the git panel button in the status bar.
+    "button": true,
+    // Where to the git panel. Can be 'left' or 'right'.
+    "dock": "left",
+    // Default width of the git panel.
+    "default_width": 360
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
+  },
+  "file_types": {
+    "Shell Script": ["**.env.*", "**.env"],
+    "C++": ["mm", "m"]
+  },
+  "format_on_save": "on",
+  "formatter": {
+    "code_actions": {
+      "source.organizeImports": true,
+      "source.fixAll.eslint": true
     }
   }
+}
   
