@@ -22,11 +22,8 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'hrsh7th/cmp-buffer', -- source for text in buffer
-      'hrsh7th/cmp-path', -- source for file system paths
-      'L3MON4D3/LuaSnip', -- snippet engine
-      'saadparwaiz1/cmp_luasnip', -- for autocompletion
-      'rafamadriz/friendly-snippets', -- useful snippets
+      'hrsh7th/cmp-nvim-lsp',
+      'saadparwaiz1/cmp_luasnip',
     },
     event = 'InsertEnter',
     config = function()
@@ -81,7 +78,6 @@ return {
           { name = 'nvim_lsp' },
           { name = 'luasnip' }, -- For luasnip users.
           { name = 'path' },
-          { name = 'supermaven' },
         }, {
           { name = 'buffer' },
         }),
