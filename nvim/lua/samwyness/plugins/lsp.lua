@@ -15,24 +15,26 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       { -- optional cmp completion source for require statements and module annotations
-        "hrsh7th/nvim-cmp",
+        'hrsh7th/nvim-cmp',
         opts = function(_, opts)
           opts.sources = opts.sources or {}
           table.insert(opts.sources, {
-            name = "lazydev",
+            name = 'lazydev',
             group_index = 0, -- set group index to 0 to skip loading LuaLS completions
           })
         end,
       },
       'hrsh7th/cmp-nvim-lsp',
       {
-        "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
+        'folke/lazydev.nvim',
+        ft = 'lua', -- only load on lua files
         opts = {
-          library = {
-            -- See the configuration section for more details
+          library = { -- See the configuration section for more details
             -- Load luvit types when the `vim.uv` word is found
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            {
+              path = '${3rd}/luv/library',
+              words = { 'vim%.uv' },
+            },
           },
         },
       },
@@ -42,8 +44,6 @@ return {
     config = function()
       require('mason').setup()
       require('mason-lspconfig').setup()
-
-      local lspconfig = require 'lspconfig'
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', {}, capabilities, require('cmp_nvim_lsp').default_capabilities())
@@ -70,7 +70,9 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
-              hint = { enable = true },
+              hint = {
+                enable = true,
+              },
             },
           },
         },
@@ -100,17 +102,25 @@ return {
       }
 
       for name, opts in pairs(servers) do
-        opts.capabilities = capabilities
-        lspconfig[name].setup(opts)
+        local config = vim.tbl_deep_extend('force', {
+          capabilities = capabilities,
+        }, opts or {})
+
+        vim.lsp.config(name, config)
+        vim.lsp.enable(name)
       end
 
       -- Add keymaps when lsp is attached to the buffer
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('samwyness-lsp-attach', { clear = true }),
+        group = vim.api.nvim_create_augroup('samwyness-lsp-attach', {
+          clear = true,
+        }),
         callback = function(event)
-
           local map = function(keys, func, desc)
-            vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+            vim.keymap.set('n', keys, func, {
+              buffer = event.buf,
+              desc = 'LSP: ' .. desc,
+            })
           end
 
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -146,7 +156,7 @@ return {
 
           map('<leader>h', function()
             ---@diagnostic disable-next-line: param-type-mismatch
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(nil), nil) 
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(nil), nil)
           end, 'Toggle inlay hints')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
