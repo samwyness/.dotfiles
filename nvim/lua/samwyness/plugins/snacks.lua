@@ -9,11 +9,13 @@ return {
     dashboard = { enabled = true, },
     indent = { enabled = true },
     input = { enabled = true },
+    git = { enabled = true },
     lazygit = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
+    picker = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = { enabled = true },
