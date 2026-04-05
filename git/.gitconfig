@@ -1,9 +1,16 @@
 [user]
-	name = samwyness
+	name = Sam Wyness
 	signingkey = ~/.ssh/id_ed25519
+	email = samwyness22@gmail.com
 [gpg]
 	format = ssh
 [commit]
 	gpgsign = true
 [tag]
 	gpgsign = true
+[core]
+	excludesFile = ~/.gitignore
+[init]
+	defaultBranch = main
+[fetch]
+	prune = true
