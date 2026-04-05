@@ -1,13 +1,14 @@
-window-width = 190
-window-height = 69
-window-position-x = 10
-window-position-y = 10
+window-width = 170
+window-height = 62
+window-position-x = 0
+window-position-y = 0
 
 theme = dark:Rose Pine,light:Rose Pine
 background-blur = 42
 background-opacity = 0.96
 
 macos-titlebar-style = tabs
+macos-window-shadow = false
 
 font-size = 15
 font-feature = -calt, -liga, -dlig

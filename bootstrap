@@ -1,0 +1,116 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
+BREWFILE="$SCRIPT_DIR/homebrew/Brewfile"
+ROOT_PACKAGES=(git zsh)
+CONFIG_PACKAGES=(ghostty homebrew nvim wezterm zed)
+
+source "$SCRIPT_DIR/script_utils.sh"
+
+preflight() {
+  [ "$(uname -s)" = "Darwin" ] || die "This bootstrap only supports macOS."
+  ensure_command curl
+  ensure_command git
+  [ -f "$BREWFILE" ] || die "Missing Brewfile: $BREWFILE"
+  mkdir -p "$HOME/.config"
+
+  log_info "Bootstrapping macOS preferences from $SCRIPT_DIR"
+}
+
+install_homebrew() {
+  if ! command -v brew >/dev/null 2>&1; then
+    log_info "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    log_info "Homebrew already installed."
+  fi
+
+  load_homebrew_env || die "Homebrew was not found after installation."
+}
+
+install_packages() {
+  if brew bundle check --file="$BREWFILE" >/dev/null 2>&1; then
+    log_info "Homebrew bundle already satisfied."
+  else
+    log_info "Installing Homebrew bundle..."
+    brew bundle install --no-upgrade --file="$BREWFILE"
+  fi
+}
+
+check_stow_package() {
+  local target_dir="$1"
+  local output
+  shift
+
+  if ! output="$(stow -d "$SCRIPT_DIR" -n -R -t "$target_dir" "$@" 2>&1)"; then
+    echo "$output" >&2
+    return 1
+  fi
+}
+
+restow_package() {
+  local target_dir="$1"
+  shift
+
+  stow -d "$SCRIPT_DIR" -R -t "$target_dir" "$@"
+}
+
+link_dotfiles() {
+  log_info "Checking root dotfiles..."
+  check_stow_package "$HOME" "${ROOT_PACKAGES[@]}"
+
+  log_info "Checking config dotfiles..."
+  for package in "${CONFIG_PACKAGES[@]}"; do
+    local target_dir="$HOME/.config/$package"
+    mkdir -p "$target_dir"
+    check_stow_package "$target_dir" "$package"
+  done
+
+  log_info "Linking root dotfiles..."
+  restow_package "$HOME" "${ROOT_PACKAGES[@]}"
+
+  log_info "Linking config dotfiles..."
+  for package in "${CONFIG_PACKAGES[@]}"; do
+    local target_dir="$HOME/.config/$package"
+    mkdir -p "$target_dir"
+    restow_package "$target_dir" "$package"
+  done
+}
+
+verify_link() {
+  local path="$1"
+  local target
+
+  [ -L "$path" ] || die "Expected symlink at $path"
+  target="$(/usr/bin/readlink "$path")"
+  log_info "Linked $path -> $target"
+}
+
+verify() {
+  log_info "Verifying bootstrap..."
+
+  ensure_command brew
+
+  verify_link "$HOME/.gitconfig"
+  verify_link "$HOME/.zshrc"
+  verify_link "$HOME/.config/ghostty/config"
+  verify_link "$HOME/.config/homebrew/Brewfile"
+  verify_link "$HOME/.config/nvim/init.lua"
+  verify_link "$HOME/.config/wezterm/wezterm.lua"
+  verify_link "$HOME/.config/zed/settings.json"
+}
+
+main() {
+  preflight
+  install_homebrew
+  install_packages
+  ensure_command stow
+  link_dotfiles
+  verify
+
+  log_info "Bootstrap complete."
+}
+
+main "$@"

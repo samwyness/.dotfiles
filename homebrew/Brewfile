@@ -4,48 +4,120 @@ tap "dopplerhq/cli"
 tap "facebook/fb"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
-tap "homebrew/cask-versions"
 tap "ngrok/ngrok"
 tap "octopusdeploy/taps"
-brew "openssl@3"
-brew "folly"
-brew "fizz"
-brew "wangle"
-brew "fbthrift"
-brew "fb303"
-brew "edencommon"
-brew "fd"
-brew "figlet"
-brew "gh"
-brew "git"
-brew "gmp"
-brew "unbound"
-brew "gnutls"
+# WHATWG-compliant and fast URL parser written in modern C++
+brew "ada-url"
+# Library for command-line editing
 brew "readline"
-brew "gnupg"
-brew "grpc"
-brew "guile"
-brew "ios-deploy"
-brew "jq"
+# Load/unload environment variables based on $PWD
+brew "direnv"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
+# Collection of reusable C++ library artifacts developed at Facebook
+brew "folly"
+# C++14 implementation of the TLS-1.3 standard
+brew "fizz"
+# Modular, composable client/server abstractions framework
+brew "wangle"
+# Facebook's branch of Apache Thrift, including a new C++ server
+brew "fbthrift"
+# Thrift functions for querying information from a service
+brew "fb303"
+# Shared library for Watchman and Eden projects
+brew "edencommon"
+# YAML Parser
 brew "libyaml"
+# Easiest way to build and release mobile apps
+brew "fastlane"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
+# Banner-like program prints strings as ASCII art
+brew "figlet"
+# GitHub command-line tool
+brew "gh"
+# Distributed revision control system
+brew "git"
+# GNU multiple precision arithmetic library
+brew "gmp"
+# Validating, recursive, caching DNS resolver
+brew "unbound"
+# GNU Transport Layer Security (TLS) Library
+brew "gnutls"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
+# Next generation open source RPC library and framework
+brew "grpc"
+# GNU Ubiquitous Intelligent Language for Extensions
+brew "guile"
+# Install and debug iPhone apps from the command-line
+brew "ios-deploy"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Simple terminal UI for git commands
+brew "lazygit"
+# HTTP/3 library written in C
+brew "libnghttp3"
+# Language Server for the Lua language
+brew "lua-language-server"
+# QUIC transport protocol implementation
 brew "mvfst"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Manage multiple Node.js versions
 brew "nvm"
+# Fast, disk space efficient package manager
+brew "pnpm"
+# Install various Ruby versions and implementations
 brew "ruby-build"
+# Ruby version manager
 brew "rbenv"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Terminal multiplexer
 brew "tmux"
+# Parser generator tool
+brew "tree-sitter-cli"
+# Watch files and take action when they change
 brew "watchman"
+# JavaScript package manager
 brew "yarn"
+# Real-time type-ahead completion for Zsh
 brew "zsh-autocomplete"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Commands for uploading files to BugSnag via the upload APIs
 brew "bugsnag/tap/bugsnag-dsym-upload"
+# The official Doppler CLI for managing your secrets
 brew "dopplerhq/cli/doppler", link: false
+# A Powerful Command Line for automating iOS Simulators
 brew "facebook/fb/idb-companion"
+# Terraform
 brew "hashicorp/tap/terraform"
+# The Octopus CLI (octo) for Octopus, a user-friendly DevOps tool for developers that supports release management, deployment automation, and operations runbooks
 brew "octopusdeploy/taps/octopuscli"
+# Launch builds and start simulators from your menu bar
+cask "expo-orbit"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
+# Window manager
+cask "loop"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
+# OpenJDK distribution from Azul
 cask "zulu@17"
+go "github.com/go-delve/delve/cmd/dlv"
+go "golang.org/x/tools/cmd/godoc"
+go "golang.org/x/tools/gopls"
+go "github.com/cweill/gotests/gotests"
+go "learn_go"
+go "honnef.co/go/tools/cmd/staticcheck"
+go "github.com/a-h/templ/cmd/templ"

@@ -8,6 +8,8 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+[core]
+	excludesFile = ~/.gitignore
 [init]
 	defaultBranch = main
 [fetch]

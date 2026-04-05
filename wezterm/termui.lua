@@ -10,11 +10,9 @@ local function registerEventHandlers(title_color_bg, title_color_fg)
   wezterm.on('update-right-status', function(window)
     local color_off = title_color_bg:lighten(0.4)
     local color_on = color_off:lighten(0.4)
-
-    local bat = ''
     local b = wezterm.battery_info()[1]
-
-    bat = wezterm.format {
+    local tick = wezterm.GLOBAL and wezterm.GLOBAL.count or 0
+    local bat = b and wezterm.format {
       { Foreground = {
         Color = b.state_of_charge > 0.2 and color_on or color_off,
       } },
@@ -39,14 +37,12 @@ local function registerEventHandlers(title_color_bg, title_color_fg)
       {
         Foreground = {
           Color = b.state == 'Charging' and color_on:lighten(0.8):complement()
-            or (b.state_of_charge < 0.5 and wezterm.GLOBAL.count % 2 == 0) and color_on
-              :lighten(0.4)
-              :complement()
+            or (b.state_of_charge < 0.5 and tick % 2 == 0) and color_on:lighten(0.4):complement()
             or color_off:darken(0.4),
         },
       },
       { Text = ' ⚡ ' },
-    }
+    } or ''
 
     local time = wezterm.strftime '%-l:%M %P'
 

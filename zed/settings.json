@@ -7,44 +7,58 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
-  "icon_theme": "Catppuccin Mocha",
-  "theme": "Catppuccin Mocha - No Italics",
+  "agent_servers": {
+    "claude": {
+      "default_mode": "plan"
+    }
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
   "telemetry": {
     "diagnostics": false,
     "metrics": false
   },
-  "features": {
-    "edit_prediction_provider": "zed",
-    "copilot": false
-  },
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
-    },
-    "version": "2",
-    "button": true
-  },
-  "chat_panel": {
-    "button": true
-  },
   "vim_mode": true,
-  "relative_line_numbers": true,
-  "ui_font_size": 15,
+  "relative_line_numbers": "enabled",
   "buffer_font_family": "Menlo",
   "buffer_font_size": 14.0,
+  "ui_font_size": 16,
   "inlay_hints": {
     "enabled": true,
     "show_type_hints": false,
     "show_parameter_hints": true,
     "show_other_hints": true
   },
+  "theme": "Rosé Pine",
+  "theme_overrides": {
+    "Rosé Pine": {
+      "vim.mode.text": "#494d64",
+      "vim.normal.background": "#8aadf4",
+      "vim.insert.background": "#a6da95",
+      "vim.visual.background": "#c6a0f6",
+      "vim.visual_line.background": "#c6a0f6",
+      "vim.visual_block.background": "#c6a0f6",
+      "vim.replace.background": "#ed8796"
+    }
+  },
+  "icon_theme": "Catppuccin Mocha",
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "project_panel": {
+    "dock": "right",
+    "default_width": 360
+  },
+  "agent": {
+    "dock": "right",
+    "model_parameters": []
+  },
   "git_panel": {
-    // Whether to show the git panel button in the status bar.
+    "sort_by_path": false,
+    "tree_view": false,
     "button": true,
-    // Where to the git panel. Can be 'left' or 'right'.
-    "dock": "left",
-    // Default width of the git panel.
+    "dock": "right",
     "default_width": 360
   },
   "tabs": {
@@ -59,11 +73,8 @@
     "C++": ["mm", "m"]
   },
   "format_on_save": "on",
-  "formatter": {
-    "code_actions": {
-      "source.organizeImports": true,
-      "source.fixAll.eslint": true
-    }
+  "formatter": "prettier",
+  "code_actions_on_format": {
+    "source.fixAll.eslint": true
   }
 }
-  

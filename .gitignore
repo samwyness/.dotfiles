@@ -7,3 +7,5 @@ ssh/.ssh/known_hosts
 # Lua
 .luarc.json
 lazy-lock.json
+nvim.log
+nvim/nvim-pack-lock.json
