@@ -24,4 +24,8 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Install: `brew install zsh-autosuggestions`
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# Enable direnv
+# Install: `brew install direnv`
+eval "$(direnv hook zsh)"
+
 source ~/.zsh_profile
