@@ -2,33 +2,20 @@
 
 My configuration files, for Mac OS.
 
-## Usage
+### Snapshot
 
-### Leaving a machine
-
-Captures the current Homebrew state into the repo for later use when re-installing.
+Update the Brewfile from the current machine state.
 
 ```bash
 ./snapshot
 ```
 
-### Fresh setup
-
-Runs the bootstrap script, installs dependencies, creates symlinks to dotfiles, and creates `dev` directories.
-
 ### Bootstrap
+
+Install dependencies and link dotfiles on a Mac.
 
 ```bash
 ./bootstrap
 ```
 
 The bootstrap is rerunnable and aborts on conflicts instead of overwriting unmanaged files.
-
-### Legacy scripts
-
-The older scripts are still present while the new flow settles:
-
-```bash
-bash setup.sh
-bash install.sh
-```
