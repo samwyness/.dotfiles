@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd -- "$(dirname -- "$0")" && pwd)"
+BREWFILE="$SCRIPT_DIR/homebrew/Brewfile"
+
+source "$SCRIPT_DIR/script_utils.sh"
+
+main() {
+  [ "$(uname -s)" = "Darwin" ] || die "This snapshot only supports macOS."
+  ensure_command git
+  load_homebrew_env || die "Homebrew was not found."
+
+  log_info "Updating Brewfile snapshot..."
+  brew bundle dump --force --describe --file "$BREWFILE"
+
+  log_info "Snapshot complete."
+}
+
+main "$@"

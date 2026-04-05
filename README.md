@@ -6,29 +6,29 @@ My configuration files, for Mac OS.
 
 ### Leaving a machine
 
-Dumps the current Homebrew dependencies to a file for later use when re-installing.
+Captures the current Homebrew state into the repo for later use when re-installing.
 
 ```bash
-brew bundle dump --file ./homebrew/Brewfile --force
+./snapshot
 ```
 
 ### Fresh setup
 
-Runs the installation script, creates symlinks to dotfiles, and creates `dev` directories.
+Runs the bootstrap script, installs dependencies, creates symlinks to dotfiles, and creates `dev` directories.
 
-### Setup
+### Bootstrap
+
+```bash
+./bootstrap
+```
+
+The bootstrap is rerunnable and aborts on conflicts instead of overwriting unmanaged files.
+
+### Legacy scripts
+
+The older scripts are still present while the new flow settles:
 
 ```bash
 bash setup.sh
-```
-
-### Install dependencies
-
-Installs [Homebrew](https://brew.sh/) and [Brewfile](https://github.com/Homebrew/homebrew-bundle) dependencies.
-
-```bash
 bash install.sh
 ```
-
-> [!NOTE]
-> Installation is run in the `setup.sh` script
